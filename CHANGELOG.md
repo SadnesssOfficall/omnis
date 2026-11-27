@@ -8,3 +8,10 @@
 - Phase 4: usage intelligence from transcripts, reminder manager (CronCreate / /schedule / OS)
 - Phase 5: security scan + PreToolUse guard hook, UI/DB/infra/research/agents engines
 - Phase 6: benchmark tool and results
+
+## 1.1.0 — multi-tool
+- MCP server (`scripts/mcp_server.py`): stdio + loopback streamable HTTP with token.
+- `install.py --target` for codex, gemini, antigravity, cursor, vscode, windsurf, cline, roo, opencode, continue, chatgpt (explanation), agents.
+- guard.py `--format codex|gemini|cursor`; Codex execpolicy rules.
+- `gateway_filter.py`: opt-in secret-masking proxy for AI gateways (9Router).
+- 12 new tests (66 total).

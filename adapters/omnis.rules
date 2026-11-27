@@ -1,0 +1,20 @@
+# OMNIS guard policy for Codex (execpolicy). Installed by `python install.py --target codex`.
+# Prefix rules only match the command's leading tokens. The OMNIS PreToolUse hook in
+# ~/.codex/hooks.json covers the regex cases these rules cannot express.
+prefix_rule(pattern=["rm", ["-rf", "-fr", "-Rf"], ["/", "~", "/*"]], decision="forbidden", justification="OMNIS: catastrophic delete")
+prefix_rule(pattern=["mkfs"], decision="forbidden", justification="OMNIS: formats a disk")
+prefix_rule(pattern=["git", "push", ["--force", "-f", "--force-with-lease"]], decision="prompt", justification="OMNIS: history rewrite")
+prefix_rule(pattern=["git", "reset", "--hard"], decision="prompt", justification="OMNIS: discards changes")
+prefix_rule(pattern=["git", "clean"], decision="prompt", justification="OMNIS: deletes untracked files")
+prefix_rule(pattern=["git", "branch", "-D"], decision="prompt", justification="OMNIS: deletes a branch")
+prefix_rule(pattern=["git", ["filter-branch", "filter-repo"]], decision="prompt", justification="OMNIS: history rewrite")
+prefix_rule(pattern=["terraform", ["apply", "destroy"]], decision="prompt", justification="OMNIS: infrastructure change")
+prefix_rule(pattern=["kubectl", ["delete", "apply"]], decision="prompt", justification="OMNIS: cluster change")
+prefix_rule(pattern=["helm", ["uninstall", "upgrade"]], decision="prompt", justification="OMNIS: cluster change")
+prefix_rule(pattern=["vercel", "--prod"], decision="prompt", justification="OMNIS: production deploy")
+prefix_rule(pattern=["fly", "deploy"], decision="prompt", justification="OMNIS: production deploy")
+prefix_rule(pattern=["systemctl", ["stop", "disable"]], decision="prompt", justification="OMNIS: stops a service")
+prefix_rule(pattern=[["npm", "pnpm", "yarn", "bun"], ["i", "install", "add"], "-g"], decision="prompt", justification="OMNIS: global package install")
+prefix_rule(pattern=["npx", "prisma", "migrate", "reset"], decision="prompt", justification="OMNIS: wipes the database")
+prefix_rule(pattern=["docker", "system", "prune"], decision="prompt", justification="OMNIS: deletes docker data")
+prefix_rule(pattern=["chmod", ["777", "-R"]], decision="prompt", justification="OMNIS: broad permission change")
