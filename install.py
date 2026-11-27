@@ -8,6 +8,9 @@ Claude Code (the original target):
   python install.py --uninstall --yes     remove the skill and the hook (backups kept)
   python install.py --verify              run the test suite against the installed copy
 
+Claude Code Developer OS (agents, workflow commands, hooks, MCP, automation; Turkish report):
+  python install.py --os [--yes]          same as /omnis setup; rollback: omnis.py geri-al [TS]
+
 Other AI tools (shared engine in ~/.omnis/app, MCP server + guidance + guard where the tool has hooks):
   python install.py --list-targets                    what is detected on this machine
   python install.py --target codex [--yes]            one tool (comma-separate several)
@@ -31,7 +34,7 @@ import time
 from pathlib import Path
 
 SRC = Path(__file__).resolve().parent
-PAYLOAD = ["SKILL.md", "install.py", "README.md", "CHANGELOG.md", "LICENSE", "scripts", "workflows", "engines", "config", "docs", "tests", "adapters"]
+PAYLOAD = ["SKILL.md", "install.py", "README.md", "CHANGELOG.md", "LICENSE", "scripts", "workflows", "engines", "config", "docs", "tests", "adapters", "os"]
 HOOK_MARK = "omnis/scripts/guard.py"
 MD_BEGIN, MD_END = "<!-- omnis:begin -->", "<!-- omnis:end -->"
 TOML_BEGIN, TOML_END = "# >>> omnis >>>", "# <<< omnis <<<"
@@ -492,7 +495,12 @@ def main(argv=None):
     ap.add_argument("--yes", action="store_true")
     ap.add_argument("--target", help="comma-separated tool names, or 'all' for every detected tool")
     ap.add_argument("--list-targets", action="store_true")
+    ap.add_argument("--os", action="store_true", help="Claude Code Developer OS: audit, install, validate, report (Turkish)")
     a = ap.parse_args(argv)
+    if a.os:
+        sys.path.insert(0, str(SRC / "scripts"))
+        import os_setup
+        return os_setup.setup(dry=not a.yes)
     if a.list_targets:
         return list_targets()
     if a.target:

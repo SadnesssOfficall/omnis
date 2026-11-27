@@ -1,6 +1,6 @@
 ---
 name: omnis
-description: Context-efficient engineering layer for Claude Code. Use for non-trivial coding work in a repo (unfamiliar codebase, bug fix, feature, refactor, verification), when command output may be long, for usage/limit status and recurring reminders or checkpoints, and for finding/auditing/installing external skills. Invoke as /omnis [map|find|outline|deps|filter|verify|debug|plan|doctor|security|memory|checkpoint|resume|usage|reminder|skills|benchmark|clean].
+description: Context-efficient engineering layer for Claude Code. Use for non-trivial coding work in a repo (unfamiliar codebase, bug fix, feature, refactor, verification), when command output may be long, for usage/limit status and recurring reminders or checkpoints, and for finding/auditing/installing external skills. Invoke as /omnis [setup|durum|geri-al|map|find|outline|deps|filter|verify|debug|plan|doctor|security|memory|checkpoint|resume|usage|reminder|skills|benchmark|clean].
 ---
 
 # OMNIS
@@ -57,4 +57,4 @@ RISKS: <open issues>
 
 ## Subcommand map
 
-`/omnis map|find|outline|deps|filter|verify|doctor|security|memory|checkpoint|usage|reminder|skills|benchmark|clean` → `omnis.py <same>` (run `omnis.py help`). `/omnis debug` → workflows/debug.md · `/omnis plan` → workflows/deep.md · `/omnis resume` → `checkpoint resume` · `/omnis skills install core` → plan first, show it, then install with `--yes` after approval · `/omnis usage reminder` → engines/automation.md.
+`/omnis map|find|outline|deps|filter|verify|doctor|security|memory|checkpoint|usage|reminder|skills|benchmark|clean` → `omnis.py <same>` (run `omnis.py help`). `/omnis debug` → workflows/debug.md · `/omnis plan` → workflows/deep.md · `/omnis resume` → `checkpoint resume` · `/omnis skills install core` → plan first, show it, then install with `--yes` after approval · `/omnis usage reminder` → engines/automation.md · `/omnis setup` → `omnis.py setup` (Developer OS: audit, backup, install, validate; report to the user in Turkish) · `/omnis durum` → `omnis.py durum` · `/omnis geri-al [ts]` → `omnis.py geri-al` · `/omnis adapt` → `omnis.py adapt` · `/omnis registry` → `omnis.py registry`. Docs: docs/tr/.

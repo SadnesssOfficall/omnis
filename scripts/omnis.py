@@ -15,6 +15,11 @@
   skills ...                    external skill catalog/installer (skill_manager.py)
   audit PATH                    audit a skill directory         (skill_audit.py)
   benchmark ...                 measure savings                 (benchmark.py)
+  setup | durum | geri-al [TS]  Developer OS: install+validate / health / rollback   (os_setup.py)
+  os-audit                      what is installed, duplicates, conflicts
+  registry [--dupes]            skill registry                  (skill_registry.py)
+  adapt [ROOT]                  stack detection + relevant skills (project_adapt.py)
+  automation ...                read-only scheduled jobs + toast (automation.py)
   clean [ROOT]                  delete this project's .omnis caches (keeps memory & checkpoints)
 """
 import runpy
@@ -31,6 +36,9 @@ ROUTES = {
     "memory": ("memory.py", []), "checkpoint": ("checkpoint.py", []), "usage": ("usage_monitor.py", []),
     "reminder": ("reminder_manager.py", []), "skills": ("skill_manager.py", []), "audit": ("skill_audit.py", []),
     "benchmark": ("benchmark.py", []),
+    "setup": ("os_setup.py", ["setup"]), "durum": ("os_setup.py", ["durum"]), "status": ("os_setup.py", ["durum"]),
+    "geri-al": ("os_setup.py", ["rollback"]), "rollback": ("os_setup.py", ["rollback"]), "os-audit": ("os_setup.py", ["audit"]),
+    "registry": ("skill_registry.py", []), "adapt": ("project_adapt.py", []), "automation": ("automation.py", []),
 }
 
 

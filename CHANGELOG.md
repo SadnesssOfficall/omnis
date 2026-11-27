@@ -15,3 +15,10 @@
 - guard.py `--format codex|gemini|cursor`; Codex execpolicy rules.
 - `gateway_filter.py`: opt-in secret-masking proxy for AI gateways (9Router).
 - 12 new tests (66 total).
+
+## 1.2.0 — Claude Code Developer OS
+- `/omnis setup|durum|geri-al` (os_setup.py), `install.py --os`: audit → backup → install → validate → Turkish report; rollback via manifest.
+- 14 specialist agents, 30 commands (workflow, skills-*, automation-*), collision-safe names.
+- os_hooks.py: protected files, post-edit secret scan + formatter, Stop typecheck (loop-safe) + toast, SessionStart checkpoint restore, PreCompact checkpoint.
+- skill_registry.py, project_adapt.py (Minecraft/FiveM/Roblox/Discord/desktop/SaaS), automation.py (Task Scheduler + toast), toast.py.
+- Turkish docs in docs/tr/. 8 new tests (74 total).
