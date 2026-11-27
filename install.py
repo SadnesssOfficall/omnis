@@ -14,11 +14,14 @@ import os
 import shutil
 import subprocess
 import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 import time
 from pathlib import Path
 
 SRC = Path(__file__).resolve().parent
-PAYLOAD = ["SKILL.md", "README.md", "CHANGELOG.md", "LICENSE", "scripts", "workflows", "engines", "config", "docs", "tests"]
+PAYLOAD = ["SKILL.md", "install.py", "README.md", "CHANGELOG.md", "LICENSE", "scripts", "workflows", "engines", "config", "docs", "tests"]
 HOOK_MARK = "omnis/scripts/guard.py"
 
 

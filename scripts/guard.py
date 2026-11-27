@@ -11,6 +11,9 @@ Override per-project with .omnis/policies.json: {"allow": ["regex", ...]}.
 import json
 import re
 import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
