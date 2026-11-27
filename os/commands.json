@@ -26,7 +26,7 @@
     "release": {"hint": "[version]", "desc": "Prepare a release: version bump, changelog, tag plan. Does not publish without approval.",
       "body": "Version: $ARGUMENTS. 1. Tests + build green (filter). 2. `{O} security diff`. 3. Changelog entry from commits since the last tag (changelog-automation skill if useful). 4. Bump version where the project keeps it. 5. Show the user the exact tag/publish commands and ask once before running them."},
     "deploy": {"hint": "[target]", "desc": "Prepare and run a deploy only after explicit approval; always with a rollback step.",
-      "body": "Target: $ARGUMENTS. Production change → ask the user first (one clear Turkish sentence). Before: build/tests green, backup or rollback plan written down, secrets via env only. After: health check, smoke test, report. Never rm storage directories; never ufw on sorvia2."},
+      "body": "Target: $ARGUMENTS. Production change → ask the user first (one clear Turkish sentence). Before: build/tests green, backup or rollback plan written down, secrets via env only. After: health check, smoke test, report. Never rm storage directories; never change host firewalls without a timed rollback."},
     "cleanup": {"hint": "[area]", "desc": "Find dead code, stale files, unused deps and caches; remove only after approval.",
       "body": "Area: $ARGUMENTS. Read-only first: unused exports (find with zero references), unused dependencies, stale build artifacts, `.omnis` caches (`{O} clean`). Present a list with evidence; delete only what the user approves, via git so it is reversible."},
     "research": {"hint": "<question>", "desc": "Answer a technical question from current official sources, with citations.",
