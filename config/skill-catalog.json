@@ -1,0 +1,50 @@
+{
+ "checked": "2026-11-27",
+ "sources": {
+  "superpowers": {"repo": "obra/superpowers", "commit": "22f0b463e7a5e579904dd6211a520321035526f7", "license": "MIT", "note": "Skills cross-reference each other as superpowers:<name>; they still work standalone but read best installed together."},
+  "anthropic": {"repo": "anthropics/skills", "commit": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba", "license": "per-skill LICENSE.txt", "note": "Official Anthropic examples. docx/pdf/pptx/xlsx are source-available (not open source) and are excluded."},
+  "ecc": {"repo": "affaan-m/ECC", "commit": "4adeee6732a12d1540f49a4d50a38ce8c97f9a53", "license": "MIT", "note": "Very large collection; only single-purpose skills without hooks are catalogued here."}
+ },
+ "skills": {
+  "systematic-debugging":           {"source": "superpowers", "category": "engineering", "overlap": "complements OMNIS workflows/debug.md (deeper method); OMNIS defers to it when installed"},
+  "verification-before-completion": {"source": "superpowers", "category": "engineering", "overlap": "complements OMNIS verify (discipline); OMNIS supplies the tooling"},
+  "test-driven-development":        {"source": "superpowers", "category": "engineering"},
+  "writing-plans":                  {"source": "superpowers", "category": "engineering"},
+  "executing-plans":                {"source": "superpowers", "category": "engineering"},
+  "requesting-code-review":         {"source": "superpowers", "category": "engineering"},
+  "receiving-code-review":          {"source": "superpowers", "category": "engineering"},
+  "brainstorming":                  {"source": "superpowers", "category": "engineering", "note": "includes helper scripts — audited before install"},
+  "using-git-worktrees":            {"source": "superpowers", "category": "engineering"},
+  "finishing-a-development-branch": {"source": "superpowers", "category": "engineering"},
+  "frontend-design":                {"source": "anthropic", "category": "ui"},
+  "webapp-testing":                 {"source": "anthropic", "category": "ui", "note": "Playwright helper scripts; needs Python playwright to run"},
+  "mcp-builder":                    {"source": "anthropic", "category": "specialized"},
+  "security-review":                {"source": "ecc", "category": "security"},
+  "security-scan":                  {"source": "ecc", "category": "security"},
+  "web-perimeter-owasp-2025-audit": {"source": "ecc", "category": "security"},
+  "mcp-dependency-review":          {"source": "ecc", "category": "security"},
+  "api-design":                     {"source": "ecc", "category": "specialized"},
+  "database-migrations":            {"source": "ecc", "category": "specialized"},
+  "codebase-onboarding":            {"source": "ecc", "category": "context", "overlap": "partly duplicates OMNIS map; kept out of core"},
+  "error-handling":                 {"source": "ecc", "category": "engineering"},
+  "accessibility":                  {"source": "ecc", "category": "ui"},
+  "browser-qa":                     {"source": "ecc", "category": "ui"},
+  "search-first":                   {"source": "ecc", "category": "research"},
+  "documentation-lookup":           {"source": "ecc", "category": "research"},
+  "deep-research":                  {"source": "ecc", "category": "research"},
+  "context-budget":                 {"source": "ecc", "category": "context"},
+  "strategic-compact":              {"source": "ecc", "category": "context"},
+  "e2e-testing":                    {"source": "ecc", "category": "engineering"},
+  "change-impact":                  {"source": "ecc", "category": "engineering", "overlap": "partly duplicates OMNIS deps; kept out of core"}
+ },
+ "presets": {
+  "core":        ["systematic-debugging", "verification-before-completion", "test-driven-development", "writing-plans", "executing-plans", "requesting-code-review", "receiving-code-review"],
+  "engineering": ["@core", "brainstorming", "using-git-worktrees", "finishing-a-development-branch", "error-handling", "e2e-testing"],
+  "security":    ["security-review", "security-scan", "web-perimeter-owasp-2025-audit", "mcp-dependency-review"],
+  "ui":          ["frontend-design", "webapp-testing", "accessibility", "browser-qa"],
+  "research":    ["search-first", "documentation-lookup", "deep-research"],
+  "context":     ["context-budget", "strategic-compact"],
+  "specialized": ["api-design", "database-migrations", "mcp-builder"],
+  "all-safe":    ["@engineering", "@security", "@ui", "@research", "@context", "@specialized"]
+ }
+}
